@@ -10,7 +10,9 @@ import com.project.market_test.domain.repository.CategoriaDTORepository;
 import com.project.market_test.persistence.crud.CategoriaCrud;
 import com.project.market_test.persistence.entity.Categoria;
 import com.project.market_test.persistence.mapper.CategoriaMapper;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class CategoriaRepository implements CategoriaDTORepository {
     @Autowired
     private CategoriaCrud categoriaCrud;

@@ -10,7 +10,9 @@ import com.project.market_test.domain.repository.ClienteDTORepository;
 import com.project.market_test.persistence.crud.ClienteCrud;
 import com.project.market_test.persistence.entity.Cliente;
 import com.project.market_test.persistence.mapper.ClienteMapper;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ClienteRepository implements ClienteDTORepository {
     @Autowired
     private ClienteCrud clienteCrud;

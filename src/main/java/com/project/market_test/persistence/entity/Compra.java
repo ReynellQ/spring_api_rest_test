@@ -11,24 +11,15 @@ public class Compra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
     private Long idCompra;
-
-    @Column(name = "id_cliente")
-    private Long idCliente;
-
+    @Column(name = "id_cliente") private String idCliente;
     @ManyToOne
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
-
-    @OneToMany(mappedBy = "producto")
-    private List<CompraProducto> compraProducto;
-
+    @OneToMany(mappedBy = "producto") private List<CompraProducto> compraProducto;
     private LocalDateTime fecha;
-
-    @Column(name = "medio_pago")
-    private Character medioPago;
-
-    private Character estado;
-
+    @Column(name = "medio_pago") private String medioPago;
+    private String estado;
+    private String comentario;
 
 
     public Long getIdCompra() {
@@ -39,36 +30,12 @@ public class Compra {
         this.idCompra = idCompra;
     }
 
-    public Long getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Long idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
-    }
-
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
-
-    public Character getMedioPago() {
-        return medioPago;
-    }
-
-    public void setMedioPago(Character medioPago) {
-        this.medioPago = medioPago;
-    }
-
-    public Character getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Character estado) {
-        this.estado = estado;
     }
 
     public Cliente getCliente() {
@@ -85,5 +52,37 @@ public class Compra {
 
     public void setCompraProducto(List<CompraProducto> compraProducto) {
         this.compraProducto = compraProducto;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getMedioPago() {
+        return medioPago;
+    }
+
+    public void setMedioPago(String medioPago) {
+        this.medioPago = medioPago;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 }

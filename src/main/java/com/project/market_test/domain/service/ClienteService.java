@@ -19,7 +19,7 @@ public class ClienteService {
         return clienteDTORepository.getAll();
     }
 
-    public Optional<ClienteDTO> getCliente(long idCliente) {
+    public Optional<ClienteDTO> getCliente(String idCliente) {
         return clienteDTORepository.getCliente(idCliente);
     }
 

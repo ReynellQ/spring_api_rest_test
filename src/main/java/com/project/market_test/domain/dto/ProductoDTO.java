@@ -1,6 +1,9 @@
 package com.project.market_test.domain.dto;
 
-public class ProductoDTO {
+import java.util.HashMap;
+import java.util.Map;
+
+public class ProductoDTO implements AbstractDTO{
     private String nombre;
     private int idCategoria;
     private double precioVenta;
@@ -55,5 +58,36 @@ public class ProductoDTO {
 
     public void setCategoria(CategoriaDTO categoria) {
         this.categoria = categoria;
+    }
+
+    @Override
+    public boolean hasCorrectData() {
+        return showErrors().isEmpty();
+    }
+
+    @Override
+    public Map<String, String> showErrors() {
+        Map<String, String> errors = new HashMap<>();
+        if(nombre == null || nombre.trim().equals(""))
+            errors.put("nombre", "Required.");
+        if(idCategoria <= 0)
+            errors.put("idCategoria", "Invalid category.");
+        if(precioVenta <= 0.0)
+            errors.put("precioVenta", "Invalid price.");
+        if(cantidadStock < 0)
+            errors.put("cantidadStock", "Invalid amount of stock.");
+        return errors;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductoDTO{" +
+                "nombre='" + nombre + '\'' +
+                ", idCategoria=" + idCategoria +
+                ", precioVenta=" + precioVenta +
+                ", cantidadStock=" + cantidadStock +
+                ", estado=" + estado +
+                ", categoria=" + categoria +
+                '}';
     }
 }

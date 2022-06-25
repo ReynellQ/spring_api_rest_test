@@ -29,4 +29,9 @@ public class CategoriaRepository implements CategoriaDTORepository {
         return categoriaCrud.findById(idCategoria).map(categoria -> categoriaMapper.toDTO(categoria));
     }
 
+    @Override
+    public CategoriaDTO save(CategoriaDTO categoria) {
+        return categoriaMapper.toDTO(categoriaCrud.save(categoriaMapper.toModel(categoria)));
+    }
+
 }

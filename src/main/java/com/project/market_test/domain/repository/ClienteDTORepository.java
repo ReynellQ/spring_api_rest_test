@@ -9,4 +9,6 @@ public interface ClienteDTORepository {
     List<ClienteDTO> getAll();
 
     Optional<ClienteDTO> getCliente(String idCliente);
+
+    ClienteDTO save(ClienteDTO cliente);
 }

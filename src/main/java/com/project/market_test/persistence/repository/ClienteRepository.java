@@ -29,4 +29,9 @@ public class ClienteRepository implements ClienteDTORepository {
         return clienteCrud.findById(idCliente).map(cliente -> clienteMapper.toDTO(cliente));
     }
 
+    @Override
+    public ClienteDTO save(ClienteDTO cliente) {
+        return clienteMapper.toDTO(clienteCrud.save(clienteMapper.toModel(cliente)));
+    }
+
 }

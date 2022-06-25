@@ -106,5 +106,20 @@ public class Producto {
     public void setCompraProductoList(List<CompraProducto> compraProductoList) {
         this.compraProductoList = compraProductoList;
     }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "idProducto=" + idProducto +
+                ", nombre='" + nombre + '\'' +
+                ", idCategoria=" + idCategoria +
+                ", categoria=" + categoria +
+                ", codigoBarras='" + codigoBarras + '\'' +
+                ", precioVenta=" + precioVenta +
+                ", cantidadStock=" + cantidadStock +
+                ", estado=" + estado +
+                ", compraProductoList=" + compraProductoList +
+                '}';
+    }
 }
 

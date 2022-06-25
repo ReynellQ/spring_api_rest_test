@@ -13,7 +13,6 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface CategoriaMapper {
     @Mappings({
-            @Mapping(source = "idCategoria", target = "idCategoria"),
             @Mapping(source = "descripcion", target = "descripcion"),
             @Mapping(source = "estado", target = "estado"),
     })
@@ -22,6 +21,7 @@ public interface CategoriaMapper {
     List<CategoriaDTO> toDTOs(List<Categoria> categorias);
 
     @InheritInverseConfiguration
+    @Mapping(target = "idCategoria", ignore = true)
     @Mapping(target = "productos", ignore = true)
     Categoria toModel(CategoriaDTO category);
 }

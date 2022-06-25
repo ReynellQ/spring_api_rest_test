@@ -13,11 +13,6 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface ClienteMapper {
     @Mappings({
-            @Mapping(source = "nombre", target = "nombre"),
-            @Mapping(source = "apellidos", target = "apellidos"),
-            @Mapping(source = "celular", target = "celular"),
-            @Mapping(source = "direccion", target = "direccion"),
-            @Mapping(source = "correoElectronico", target = "correoElectronico"),
     })
     ClienteDTO toDTO(Cliente cliente);
 
@@ -25,6 +20,5 @@ public interface ClienteMapper {
 
     @InheritInverseConfiguration
     @Mapping(target = "compras", ignore = true)
-    @Mapping(target = "idCliente", ignore = true)
     Cliente toModel(ClienteDTO clienteDTO);
 }

@@ -9,4 +9,5 @@ public interface CategoriaDTORepository {
     List<CategoriaDTO> getAll();
 
     Optional<CategoriaDTO> getCategoria(long idCategoria);
+    CategoriaDTO save(CategoriaDTO categoria);
 }

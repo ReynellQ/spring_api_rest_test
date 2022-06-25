@@ -1,6 +1,9 @@
 package com.project.market_test.domain.dto;
 
-public class ClienteDTO {
+import java.util.HashMap;
+import java.util.Map;
+
+public class ClienteDTO implements AbstractDTO{
     private String idCliente;
     private String nombre;
     private String apellidos;
@@ -36,7 +39,7 @@ public class ClienteDTO {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(long celular) {
         this.celular = celular;
     }
 
@@ -54,5 +57,22 @@ public class ClienteDTO {
 
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
+    }
+
+    public Map<String, String> showErrors(){
+        Map<String, String> err = new HashMap<>();
+        if(nombre == null || nombre.trim().equals(""))
+            err.put("nombre","Required.");
+        if(idCliente== null || idCliente.trim().equals(""))
+            err.put("idCliente","Required.");
+        if( apellidos == null || apellidos.trim().equals(""))
+            err.put("apellidos","Required.");
+        if(correoElectronico == null || correoElectronico.trim().equals(""))
+            err.put("correoElectronico","Required.");
+        return err;
+    }
+    @Override
+    public boolean hasCorrectData() {
+        return showErrors().isEmpty();
     }
 }

@@ -9,4 +9,6 @@ public interface ProductoDTORepository {
     List<ProductoDTO> getAll();
 
     Optional<ProductoDTO> getProduct(long productId);
+
+    ProductoDTO save(ProductoDTO producto);
 }

@@ -15,3 +15,13 @@ Una API REST para ver los recursos de un market
       GET /api/categorias/ : Ver todas las categorias
       GET /api/categorias/{id} : Ver una categoria con el ID especificado
     ```
+- V2:
+  - Entry Points:
+    ```
+      POST /api/clientes/ : Añadir un cliente
+      POST /api/categoria/ : Añadir una categoria
+      POST /api/productos/ : Añadir un producto
+      GET /api/compras/{id}/list : Ver compra con productos
+      POST /api/compras/ : Añadir una compra (con productos)
+      
+    ```

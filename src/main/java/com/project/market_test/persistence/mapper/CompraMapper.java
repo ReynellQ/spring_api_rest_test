@@ -1,30 +1,30 @@
 package com.project.market_test.persistence.mapper;
 
 import com.project.market_test.domain.dto.CompraDTO;
+import com.project.market_test.domain.dto.CompraItemDTO;
+import com.project.market_test.domain.dto.CompraWithProductosDTO;
 import com.project.market_test.persistence.entity.Compra;
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
+import org.mapstruct.*;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = CompraItemMapper.class)
 public interface CompraMapper {
-    @Mappings({
-            @Mapping(source = "idCliente", target = "idCliente"),
-            @Mapping(source = "fecha", target = "fecha"),
-            @Mapping(source = "medioPago", target = "medioPago"),
-            @Mapping(source = "comentario", target = "comentario"),
-            @Mapping(source = "estado", target = "estado"),
-    })
+    @Named("A purchase")
     CompraDTO toDTO(Compra compra);
-
+    @Named("A purchase")
     List<CompraDTO> toDTOs(List<Compra> compras);
+    @Named("Purchase with items")
+    CompraWithProductosDTO toDTOWithProducts(Compra compra);
 
-    @InheritInverseConfiguration
+    @InheritInverseConfiguration(name = "toDTO")
     @Mapping(target = "idCompra", ignore = true)
     @Mapping(target = "cliente", ignore = true)
     @Mapping(target = "compraProducto", ignore = true)
     Compra toModel(CompraDTO compraDTO);
+
+    @InheritInverseConfiguration(name = "toDTOWithProducts")
+    @Mapping(target = "idCompra", ignore = true)
+    @Mapping(target = "cliente", ignore = true)
+    Compra toModelWithProducts(CompraWithProductosDTO compraDTO);
 }

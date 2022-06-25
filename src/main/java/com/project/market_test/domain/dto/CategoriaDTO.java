@@ -1,17 +1,12 @@
 package com.project.market_test.domain.dto;
 
-public class CategoriaDTO {
-    private long idCategoria;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class CategoriaDTO implements AbstractDTO{
     private String descripcion;
     private Boolean estado;
-
-    public long getIdCategoria() {
-        return idCategoria;
-    }
-
-    public void setIdCategoria(long idCategoria) {
-        this.idCategoria = idCategoria;
-    }
 
     public String getDescripcion() {
         return descripcion;
@@ -27,5 +22,24 @@ public class CategoriaDTO {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public boolean hasCorrectData() {
+        if(descripcion == null || descripcion.trim().equals(""))
+            return false;
+        if(estado == null)
+            return false;
+        return true;
+    }
+
+    @Override
+    public Map<String, String> showErrors() {
+        Map <String, String> errors = new HashMap<>();
+        if(descripcion == null || descripcion.trim().equals(""))
+            errors.put("descripcion", "Required.");
+        if(estado == null)
+            errors.put("estado", "Required.");
+        return errors;
     }
 }

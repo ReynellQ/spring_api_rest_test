@@ -1,6 +1,7 @@
 package com.project.market_test.persistence.repository;
 
 import com.project.market_test.domain.dto.ProductoDTO;
+import com.project.market_test.domain.dto.ProductoWithIDDTIO;
 import com.project.market_test.domain.repository.ProductoDTORepository;
 import com.project.market_test.persistence.crud.ProductoCrud;
 import com.project.market_test.persistence.entity.Producto;
@@ -27,5 +28,11 @@ public class ProductoRepository implements ProductoDTORepository {
     @Override
     public Optional<ProductoDTO> getProduct(long idProducto) {
         return productoCrud.findById(idProducto).map(producto -> productoMapper.toDTO(producto));
+    }
+
+    @Override
+    public ProductoDTO save(ProductoDTO producto) {
+        Producto p = productoCrud.save(productoMapper.toModel(producto));
+        return productoMapper.toDTOWithID(productoCrud.findById(p.getIdProducto()).get());
     }
 }

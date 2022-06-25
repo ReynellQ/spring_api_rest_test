@@ -27,4 +27,6 @@ public class CompraProductoPK implements Serializable {
     public void setIdProducto(Long idProducto) {
         this.idProducto = idProducto;
     }
+
+
 }
